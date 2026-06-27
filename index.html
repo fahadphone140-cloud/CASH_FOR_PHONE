@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ====== جميع الأنماط كما هي ====== */
+        /* ====== الأساسيات ====== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Tajawal', sans-serif;
@@ -17,6 +17,7 @@
         }
         a { text-decoration: none; }
 
+        /* ====== الهيدر ====== */
         .header {
             background: #0b1a2a;
             padding: 15px 30px;
@@ -55,6 +56,7 @@
             color: #0b1a2a;
         }
 
+        /* ====== المحتوى ====== */
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -71,6 +73,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ====== الصفحة الرئيسية ====== */
         .hero {
             background: linear-gradient(135deg, #0b1a2a, #1a344a);
             padding: 60px 30px;
@@ -129,6 +132,7 @@
         .feature-card h3 { font-size: 20px; color: #0b1a2a; }
         .feature-card p { color: #5a7a95; font-size: 15px; }
 
+        /* ====== شريط الفلتر ====== */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
@@ -172,6 +176,7 @@
         }
         .btn-reset:hover { background: #c0392b; }
 
+        /* ====== شبكة المنتجات ====== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -186,6 +191,7 @@
             border: 1px solid #eef3f8;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .product-card img {
@@ -228,6 +234,196 @@
             grid-column: 1 / -1;
         }
 
+        /* ====== نافذة تفاصيل المنتج (Modal - مثل السوق المفتوح) ====== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 95vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            animation: modalFade 0.4s ease;
+        }
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.9) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-close {
+            position: sticky;
+            top: 0;
+            float: left;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover { background: #c0392b; transform: rotate(90deg); }
+
+        /* ====== شريط تمرير الصور (Slider) - معدل ====== */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #f0f4fa;
+            margin-bottom: 20px;
+        }
+        .slider-container .slider-track {
+            display: flex;
+            transition: transform 0.4s ease;
+            height: 100%;
+            width: 100%; /* عرض المسار يساوي عرض الحاوية */
+        }
+        .slider-container .slider-track img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f0f4fa;
+            flex-shrink: 0; /* ← المفتاح: يمنع الصورة من الانكماش */
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 5;
+        }
+        .slider-btn:hover { background: rgba(0, 0, 0, 0.8); }
+        .slider-btn.prev { left: 12px; }
+        .slider-btn.next { right: 12px; }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .slider-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #dce2e9;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .slider-dots .dot.active { background: #f4b942; transform: scale(1.2); }
+
+        /* ====== تفاصيل المنتج ====== */
+        .modal-product-name {
+            font-size: 26px;
+            font-weight: 900;
+            color: #0b1a2a;
+            margin: 10px 0 15px;
+            text-align: center;
+        }
+        .modal-product-price {
+            font-size: 30px;
+            color: #c0392b;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .modal-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+            background: #f8fafe;
+            padding: 20px;
+            border-radius: 18px;
+            margin: 15px 0;
+        }
+        .modal-details-grid .detail-item {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #eef3f8;
+            padding-bottom: 6px;
+        }
+        .modal-details-grid .detail-item .label {
+            font-size: 13px;
+            color: #7f8c8d;
+            font-weight: 700;
+        }
+        .modal-details-grid .detail-item .value {
+            font-size: 16px;
+            color: #1e2b3c;
+            font-weight: 700;
+        }
+        .modal-store-info {
+            background: #f0f7ff;
+            padding: 18px;
+            border-radius: 18px;
+            margin-top: 15px;
+            border-right: 4px solid #f4b942;
+        }
+        .modal-store-info .store-name {
+            font-size: 18px;
+            font-weight: 900;
+            color: #0b1a2a;
+        }
+        .modal-store-info .store-detail {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-top: 4px;
+        }
+        .modal-store-info .store-detail i {
+            color: #f4b942;
+            width: 22px;
+        }
+        .modal-notes {
+            background: #fff8e8;
+            padding: 14px 18px;
+            border-radius: 14px;
+            margin-top: 12px;
+            border-right: 4px solid #f39c12;
+        }
+        .modal-notes .label {
+            font-weight: 700;
+            color: #7f8c8d;
+            font-size: 13px;
+        }
+        .modal-notes .value {
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* ====== صفحة الصيانة ====== */
         .maintenance-box {
             background: white;
             padding: 40px;
@@ -280,6 +476,7 @@
         .status-completed { background: #e5f9e5; color: #27ae60; }
         .status-delivered { background: #e5f0ff; color: #2980b9; }
 
+        /* ====== صفحة البحث عن سلعة ====== */
         .search-item-box {
             background: white;
             padding: 30px;
@@ -311,6 +508,7 @@
         }
         .search-item-box button:hover { background: #e0a535; }
 
+        /* ====== صفحة اتصل بنا ====== */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
@@ -334,6 +532,7 @@
         .contact-item h4 { font-size: 18px; color: #0b1a2a; }
         .contact-item p { color: #5a7a95; }
 
+        /* ====== تذييل ====== */
         .footer {
             background: #0b1a2a;
             color: #aab9c9;
@@ -344,12 +543,16 @@
         }
         .footer a { color: #f4b942; }
 
+        /* ====== توافق الجوال ====== */
         @media (max-width: 750px) {
             .header { flex-direction: column; gap: 12px; }
             .nav-links { justify-content: center; }
             .hero h1 { font-size: 30px; }
             .filter-bar { flex-direction: column; align-items: stretch; }
             .filter-bar select, .filter-bar input, .filter-bar button { width: 100%; }
+            .slider-container { height: 260px; }
+            .modal-details-grid { grid-template-columns: 1fr; }
+            .modal-content { padding: 18px; }
         }
     </style>
 </head>
@@ -508,6 +711,43 @@
 
     </div>
 
+    <!-- ====== نافذة تفاصيل المنتج (Modal) ====== -->
+    <div id="productModal" class="modal-overlay" onclick="closeModalOutside(event)">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            
+            <!-- شريط التمرير -->
+            <div class="slider-container" id="sliderContainer">
+                <div class="slider-track" id="sliderTrack"></div>
+                <button class="slider-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+
+            <!-- اسم المنتج -->
+            <div class="modal-product-name" id="modalProductName">اسم المنتج</div>
+            <!-- السعر -->
+            <div class="modal-product-price" id="modalProductPrice">0 د.أ</div>
+
+            <!-- شبكة التفاصيل -->
+            <div class="modal-details-grid" id="modalDetailsGrid"></div>
+
+            <!-- الملاحظات -->
+            <div class="modal-notes" id="modalNotes" style="display:none;">
+                <div class="label">📝 ملاحظات</div>
+                <div class="value" id="modalNotesText"></div>
+            </div>
+
+            <!-- معلومات المحل -->
+            <div class="modal-store-info" id="modalStoreInfo">
+                <div class="store-name" id="modalStoreName">اسم المحل</div>
+                <div class="store-detail"><i class="fas fa-phone"></i> <span id="modalStorePhone">رقم الهاتف</span></div>
+                <div class="store-detail"><i class="fas fa-map-marker-alt"></i> <span id="modalStoreLocation">الموقع</span></div>
+                <div class="store-detail"><i class="fas fa-city"></i> <span id="modalStoreProvince">المحافظة</span></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ====== تذييل ====== -->
     <div class="footer">
         <p>© 2026 CASH FOR PHONE - جميع الحقوق محفوظة</p>
@@ -515,10 +755,10 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- جافا سكريبت - مع رابط Google Apps Script الجديد -->
+    <!-- جافا سكريبت -->
     <!-- ============================================================ -->
     <script>
-        // ========== 1. رابط Google Apps Script الجديد ==========
+        // ========== 1. رابط Google Apps Script ==========
         const DATA_API_URL = 'https://script.google.com/macros/s/AKfycbw2DV9t7JA38YGtJ9Qskdaup6u86XukmOnyyuCXgq2PculeWUQ0g6MQ29Kgx2gNLRe5Sw/exec';
 
         // ========== 2. نظام التنقل بين الصفحات ==========
@@ -539,7 +779,6 @@
                 link.classList.remove('active');
                 if (link.dataset.page === pageId) link.classList.add('active');
             });
-            // تحميل البيانات عند فتح الصفحات
             if (pageId === 'phones') loadPhones();
             if (pageId === 'accessories') loadAccessories();
             if (pageId === 'search') document.getElementById('itemResults').innerHTML = '<div class="no-results">اكتب اسم السلعة في الأعلى للبحث</div>';
@@ -552,7 +791,171 @@
             });
         });
 
-        // ========== 3. متجر الهواتف (جلب حقيقي من السكربت) ==========
+        // ========== 3. دوال معالجة الصور ==========
+        function getImageUrl(photoUrl) {
+            if (!photoUrl || photoUrl === '' || photoUrl === 'undefined') return null;
+            let first = photoUrl.split(',')[0].trim();
+            let match = first.match(/[?&]id=([^&]+)/);
+            if (match && match[1]) {
+                return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w400-h400`;
+            }
+            return first;
+        }
+
+        function getAllImageUrls(photoUrl) {
+            if (!photoUrl || photoUrl === '') return [];
+            let urls = photoUrl.split(',').map(u => u.trim()).filter(u => u !== '');
+            return urls.map(u => {
+                let match = u.match(/[?&]id=([^&]+)/);
+                if (match && match[1]) {
+                    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800-h800`;
+                }
+                return u;
+            });
+        }
+
+        // ========== 4. نظام النافذة المنبثقة (Modal) ==========
+        let currentImages = [];
+        let currentIndex = 0;
+        let currentProductData = null;
+
+        function openModal(productData) {
+            currentProductData = productData;
+            
+            // 1. تعبئة اسم المنتج
+            let name = productData.Brand ? productData.Brand + ' ' + productData.DeviceModel : productData.Name || 'هاتف';
+            document.getElementById('modalProductName').textContent = name;
+
+            // 2. تعبئة السعر
+            let price = productData.SellingPrice ? parseFloat(productData.SellingPrice).toLocaleString() : 'غير محدد';
+            document.getElementById('modalProductPrice').textContent = price + ' د.أ';
+
+            // 3. تعبئة الصور في السلايدر
+            let imageUrls = getAllImageUrls(productData.PhotoUrl);
+            if (imageUrls.length === 0) {
+                imageUrls = ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23eef3f8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2240%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E'];
+            }
+            currentImages = imageUrls;
+            currentIndex = 0;
+            renderSlider();
+
+            // 4. تعبئة شبكة التفاصيل
+            let grid = document.getElementById('modalDetailsGrid');
+            let detailsHtml = '';
+            
+            const detailFields = [
+                { label: '📦 التخزين', key: 'Storage' },
+                { label: '🎨 اللون', key: 'Color' },
+                { label: '🔋 البطارية', key: 'BatteryHealth' },
+                { label: '🧠 الرام', key: 'Ram' },
+                { label: '📋 الحالة', key: 'Condition' },
+                { label: '📝 المواصفات', key: 'Specs' },
+            ];
+
+            detailFields.forEach(field => {
+                let value = productData[field.key] || '';
+                if (value && value.trim() !== '') {
+                    detailsHtml += `
+                        <div class="detail-item">
+                            <span class="label">${field.label}</span>
+                            <span class="value">${value}</span>
+                        </div>
+                    `;
+                }
+            });
+
+            grid.innerHTML = detailsHtml || '<div class="detail-item" style="grid-column:1/-1;text-align:center;color:#7f8c8d;">لا توجد تفاصيل إضافية</div>';
+
+            // 5. الملاحظات
+            let notesDiv = document.getElementById('modalNotes');
+            let notesText = document.getElementById('modalNotesText');
+            if (productData.Notes && productData.Notes.trim() !== '') {
+                notesDiv.style.display = 'block';
+                notesText.textContent = productData.Notes;
+            } else {
+                notesDiv.style.display = 'none';
+            }
+
+            // 6. معلومات المحل
+            document.getElementById('modalStoreName').textContent = productData.StoreName || 'محل غير محدد';
+            document.getElementById('modalStorePhone').textContent = productData.StorePhone || 'غير متوفر';
+            document.getElementById('modalStoreLocation').textContent = productData.Location || 'غير محدد';
+            document.getElementById('modalStoreProvince').textContent = productData.Province || 'غير محدد';
+
+            // 7. إظهار النافذة
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeModalOutside(e) {
+            if (e.target === document.getElementById('productModal')) {
+                closeModal();
+            }
+        }
+
+        // ========== 5. السلايدر (Slider) - معدل ==========
+        function renderSlider() {
+            let track = document.getElementById('sliderTrack');
+            let dots = document.getElementById('sliderDots');
+            
+            track.innerHTML = '';
+            dots.innerHTML = '';
+
+            if (currentImages.length === 0) return;
+
+            // إنشاء الصور
+            currentImages.forEach((img, index) => {
+                let imgEl = document.createElement('img');
+                imgEl.src = img;
+                imgEl.alt = 'صورة المنتج';
+                imgEl.loading = 'lazy';
+                track.appendChild(imgEl);
+
+                // النقاط (dots)
+                let dot = document.createElement('span');
+                dot.className = 'dot' + (index === currentIndex ? ' active' : '');
+                dot.onclick = () => goToSlide(index);
+                dots.appendChild(dot);
+            });
+
+            // تحديث موضع السلايدر
+            updateSliderPosition();
+        }
+
+        function updateSliderPosition() {
+            let track = document.getElementById('sliderTrack');
+            let images = track.querySelectorAll('img');
+            
+            if (images.length === 0) return;
+
+            // نطبق التحويل على المسار بناءً على الفهرس الحالي
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // تحديث النقاط
+            let dots = document.querySelectorAll('.slider-dots .dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function changeSlide(direction) {
+            if (currentImages.length === 0) return;
+            currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+            updateSliderPosition();
+        }
+
+        function goToSlide(index) {
+            if (index < 0 || index >= currentImages.length) return;
+            currentIndex = index;
+            updateSliderPosition();
+        }
+
+        // ========== 6. متجر الهواتف ==========
         let allPhones = [];
 
         async function loadPhones() {
@@ -585,11 +988,17 @@
             phones.forEach(p => {
                 const name = p.Brand ? p.Brand + ' ' + p.DeviceModel : p.Name || 'هاتف';
                 const price = p.SellingPrice ? parseFloat(p.SellingPrice).toLocaleString() : 'غير محدد';
-                // الصورة: إذا كانت موجودة نأخذ الأولى، وإلا نضع صورة افتراضية
-                const img = p.PhotoUrl ? p.PhotoUrl.split(',')[0] : 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E';
+                
+                let img = getImageUrl(p.PhotoUrl);
+                if (!img) {
+                    img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E';
+                }
+                
+                // استخدام JSON.stringify مع replace لتجنب مشاكل الاقتباس
+                const productJson = JSON.stringify(p).replace(/"/g, '&quot;');
                 html += `
-                    <div class="product-card">
-                        <img src="${img}" alt="${name}" loading="lazy" />
+                    <div class="product-card" onclick="openModal(${productJson})">
+                        <img src="${img}" alt="${name}" loading="lazy" referrerpolicy="no-referrer" />
                         <div class="product-info">
                             <h4>${name}</h4>
                             <div class="price">${price} د.أ</div>
@@ -627,7 +1036,7 @@
             renderPhones(allPhones);
         }
 
-        // ========== 4. متجر الاكسسوارات ==========
+        // ========== 7. متجر الاكسسوارات ==========
         let allAccessories = [];
 
         async function loadAccessories() {
@@ -659,10 +1068,15 @@
             let html = '';
             items.forEach(item => {
                 const price = item.SellingPrice ? parseFloat(item.SellingPrice).toLocaleString() : 'غير محدد';
-                const img = item.PhotoUrl ? item.PhotoUrl.split(',')[0] : 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎧%3C/text%3E%3C/svg%3E';
+                let img = getImageUrl(item.PhotoUrl);
+                if (!img) {
+                    img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎧%3C/text%3E%3C/svg%3E';
+                }
+                
+                const productJson = JSON.stringify(item).replace(/"/g, '&quot;');
                 html += `
-                    <div class="product-card">
-                        <img src="${img}" alt="${item.Name}" loading="lazy" />
+                    <div class="product-card" onclick="openModal(${productJson})">
+                        <img src="${img}" alt="${item.Name}" loading="lazy" referrerpolicy="no-referrer" />
                         <div class="product-info">
                             <h4>${item.Name}</h4>
                             <div class="price">${price} د.أ</div>
@@ -689,7 +1103,7 @@
             renderAccessories(allAccessories);
         }
 
-        // ========== 5. الاستعلام عن صيانة ==========
+        // ========== 8. الاستعلام عن صيانة ==========
         async function checkMaintenance() {
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
@@ -738,7 +1152,7 @@
             }
         }
 
-        // ========== 6. البحث عن سلعة ==========
+        // ========== 9. البحث عن سلعة ==========
         function searchItems() {
             const query = document.getElementById('itemSearch').value.trim().toLowerCase();
             const container = document.getElementById('itemResults');
@@ -748,7 +1162,6 @@
                 return;
             }
 
-            // نبحث في الهواتف والإكسسوارات معاً
             const phoneResults = allPhones.filter(p => {
                 const full = (p.Brand + ' ' + p.DeviceModel + ' ' + p.Name).toLowerCase();
                 return full.includes(query);
@@ -770,10 +1183,15 @@
             combined.forEach(item => {
                 const name = item.Brand ? item.Brand + ' ' + item.DeviceModel : item.Name || 'سلعة';
                 const price = item.SellingPrice ? parseFloat(item.SellingPrice).toLocaleString() : 'غير محدد';
-                const img = item.PhotoUrl ? item.PhotoUrl.split(',')[0] : 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🔍%3C/text%3E%3C/svg%3E';
+                let img = getImageUrl(item.PhotoUrl);
+                if (!img) {
+                    img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🔍%3C/text%3E%3C/svg%3E';
+                }
+                
+                const productJson = JSON.stringify(item).replace(/"/g, '&quot;');
                 html += `
-                    <div class="product-card">
-                        <img src="${img}" alt="${name}" loading="lazy" />
+                    <div class="product-card" onclick="openModal(${productJson})">
+                        <img src="${img}" alt="${name}" loading="lazy" referrerpolicy="no-referrer" />
                         <div class="product-info">
                             <h4>${name}</h4>
                             <div class="price">${price} د.أ</div>
@@ -785,13 +1203,13 @@
             container.innerHTML = html;
         }
 
-        // ========== 7. تحميل البيانات عند بدء التشغيل ==========
+        // ========== 10. تحميل البيانات عند بدء التشغيل ==========
         window.addEventListener('load', function() {
             if (document.getElementById('page-phones').classList.contains('active')) loadPhones();
             if (document.getElementById('page-accessories').classList.contains('active')) loadAccessories();
         });
 
-        console.log('✅ صفحة CASH FOR PHONE جاهزة ومربوطة بالسكربت الجديد!');
+        console.log('✅ صفحة CASH FOR PHONE جاهزة مع نظام السوق المفتوح (تم إصلاح السلايدر)!');
     </script>
 </body>
 </html>
