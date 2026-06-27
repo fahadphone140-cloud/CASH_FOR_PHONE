@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ====== الأساسيات ====== */
+        /* ====== جميع الأنماط كما هي، مع إضافة أنماط شبكة الصور ====== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Tajawal', sans-serif;
@@ -17,7 +17,6 @@
         }
         a { text-decoration: none; }
 
-        /* ====== الهيدر ====== */
         .header {
             background: #0b1a2a;
             padding: 15px 30px;
@@ -56,7 +55,6 @@
             color: #0b1a2a;
         }
 
-        /* ====== المحتوى ====== */
         .container {
             max-width: 1200px;
             margin: 30px auto;
@@ -73,7 +71,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ====== الصفحة الرئيسية ====== */
         .hero {
             background: linear-gradient(135deg, #0b1a2a, #1a344a);
             padding: 60px 30px;
@@ -82,10 +79,7 @@
             color: white;
             margin-bottom: 40px;
         }
-        .hero h1 {
-            font-size: 44px;
-            margin-bottom: 15px;
-        }
+        .hero h1 { font-size: 44px; margin-bottom: 15px; }
         .hero h1 span { color: #f4b942; }
         .hero p {
             font-size: 20px;
@@ -124,15 +118,10 @@
             transition: 0.3s;
         }
         .feature-card:hover { transform: translateY(-6px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .feature-card i {
-            font-size: 44px;
-            color: #f4b942;
-            margin-bottom: 12px;
-        }
+        .feature-card i { font-size: 44px; color: #f4b942; margin-bottom: 12px; }
         .feature-card h3 { font-size: 20px; color: #0b1a2a; }
         .feature-card p { color: #5a7a95; font-size: 15px; }
 
-        /* ====== شريط الفلتر ====== */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
@@ -165,18 +154,11 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .btn-filter {
-            background: #0b1a2a;
-            color: white;
-        }
+        .btn-filter { background: #0b1a2a; color: white; }
         .btn-filter:hover { background: #f4b942; color: #0b1a2a; }
-        .btn-reset {
-            background: #e74c3c;
-            color: white;
-        }
+        .btn-reset { background: #e74c3c; color: white; }
         .btn-reset:hover { background: #c0392b; }
 
-        /* ====== شبكة المنتجات ====== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -206,16 +188,8 @@
             display: flex;
             flex-direction: column;
         }
-        .product-info h4 {
-            font-size: 19px;
-            margin-bottom: 4px;
-            color: #0b1a2a;
-        }
-        .product-info .price {
-            color: #c0392b;
-            font-size: 22px;
-            font-weight: 900;
-        }
+        .product-info h4 { font-size: 19px; margin-bottom: 4px; color: #0b1a2a; }
+        .product-info .price { color: #c0392b; font-size: 22px; font-weight: 900; }
         .product-info .province {
             background: #eef3f8;
             display: inline-block;
@@ -234,7 +208,7 @@
             grid-column: 1 / -1;
         }
 
-        /* ====== نافذة تفاصيل المنتج (Modal) - تغطي الصفحة بالكامل ====== */
+        /* ====== نافذة تفاصيل المنتج (Modal) ====== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -242,29 +216,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(6px);
             padding: 20px;
             overflow-y: auto;
         }
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         .modal-content {
             background: white;
             border-radius: 25px;
             max-width: 900px;
             width: 100%;
-            max-height: 98vh;
+            max-height: 95vh;
             overflow-y: auto;
-            padding: 25px 30px 30px;
+            padding: 30px;
             position: relative;
             animation: modalFade 0.4s ease;
         }
         @keyframes modalFade {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            from { opacity: 0; transform: scale(0.9) translateY(30px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
         .modal-close {
@@ -274,108 +247,70 @@
             background: #e74c3c;
             color: white;
             border: none;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             z-index: 10;
             transition: 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
         }
         .modal-close:hover { background: #c0392b; transform: rotate(90deg); }
 
-        /* ====== شريط تمرير الصور (Slider) ====== */
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            border-radius: 18px;
-            overflow: hidden;
-            background: #f0f4fa;
-            margin-bottom: 15px;
-        }
-        .slider-container .slider-track {
-            display: flex;
-            transition: transform 0.4s ease;
-            height: 100%;
-            width: 100%;
-        }
-        .slider-container .slider-track img {
-            min-width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #f0f4fa;
-            flex-shrink: 0;
-            cursor: zoom-in;
-        }
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 22px;
-            cursor: pointer;
-            transition: 0.3s;
-            z-index: 5;
-        }
-        .slider-btn:hover { background: rgba(0, 0, 0, 0.8); }
-        .slider-btn.prev { left: 12px; }
-        .slider-btn.next { right: 12px; }
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 12px 0 15px;
-        }
-        .slider-dots .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #dce2e9;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .slider-dots .dot.active { background: #f4b942; transform: scale(1.2); }
-
-        /* ====== أزرار الاتصال ====== */
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+        /* ====== شبكة الصور (بديل السلايدر) ====== */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
             margin: 15px 0 20px;
+        }
+        .image-grid .grid-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: zoom-in;
+            transition: 0.3s;
+            border: 2px solid #eef3f8;
+            background: #f0f4fa;
+        }
+        .image-grid .grid-img:hover {
+            transform: scale(1.03);
+            border-color: #f4b942;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* ====== أزرار الاتصال والواتساب ====== */
+        .modal-action-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 15px 0 10px;
             flex-wrap: wrap;
         }
-        .action-buttons a {
+        .modal-action-buttons .btn-action {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 30px;
+            padding: 12px 28px;
+            border: none;
             border-radius: 50px;
-            font-weight: 700;
             font-size: 17px;
-            color: white;
+            font-weight: 700;
+            cursor: pointer;
             transition: 0.3s;
-            text-decoration: none;
+            color: white;
+            font-family: 'Tajawal', sans-serif;
         }
-        .action-buttons .btn-call {
-            background: #27ae60;
-        }
-        .action-buttons .btn-call:hover { background: #219a52; }
-        .action-buttons .btn-whatsapp {
-            background: #25D366;
-        }
-        .action-buttons .btn-whatsapp:hover { background: #1da851; }
+        .modal-action-buttons .btn-action i { font-size: 20px; }
+        .modal-action-buttons .btn-call { background: #2ecc71; }
+        .modal-action-buttons .btn-call:hover { background: #27ae60; transform: scale(1.03); }
+        .modal-action-buttons .btn-whatsapp { background: #25D366; }
+        .modal-action-buttons .btn-whatsapp:hover { background: #1da851; transform: scale(1.03); }
 
-        /* ====== تفاصيل المنتج ====== */
         .modal-product-name {
             font-size: 26px;
             font-weight: 900;
@@ -405,16 +340,9 @@
             border-bottom: 1px solid #eef3f8;
             padding-bottom: 6px;
         }
-        .modal-details-grid .detail-item .label {
-            font-size: 13px;
-            color: #7f8c8d;
-            font-weight: 700;
-        }
-        .modal-details-grid .detail-item .value {
-            font-size: 16px;
-            color: #1e2b3c;
-            font-weight: 700;
-        }
+        .modal-details-grid .detail-item .label { font-size: 13px; color: #7f8c8d; font-weight: 700; }
+        .modal-details-grid .detail-item .value { font-size: 16px; color: #1e2b3c; font-weight: 700; }
+
         .modal-store-info {
             background: #f0f7ff;
             padding: 18px;
@@ -422,20 +350,10 @@
             margin-top: 15px;
             border-right: 4px solid #f4b942;
         }
-        .modal-store-info .store-name {
-            font-size: 18px;
-            font-weight: 900;
-            color: #0b1a2a;
-        }
-        .modal-store-info .store-detail {
-            font-size: 15px;
-            color: #2c3e50;
-            margin-top: 4px;
-        }
-        .modal-store-info .store-detail i {
-            color: #f4b942;
-            width: 22px;
-        }
+        .modal-store-info .store-name { font-size: 18px; font-weight: 900; color: #0b1a2a; }
+        .modal-store-info .store-detail { font-size: 15px; color: #2c3e50; margin-top: 4px; }
+        .modal-store-info .store-detail i { color: #f4b942; width: 22px; }
+
         .modal-notes {
             background: #fff8e8;
             padding: 14px 18px;
@@ -443,15 +361,49 @@
             margin-top: 12px;
             border-right: 4px solid #f39c12;
         }
-        .modal-notes .label {
-            font-weight: 700;
-            color: #7f8c8d;
-            font-size: 13px;
+        .modal-notes .label { font-weight: 700; color: #7f8c8d; font-size: 13px; }
+        .modal-notes .value { font-size: 16px; color: #2c3e50; }
+
+        /* ====== نافذة عرض الصورة بحجم كبير (زوم) ====== */
+        .image-zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            padding: 30px;
         }
-        .modal-notes .value {
-            font-size: 16px;
-            color: #2c3e50;
+        .image-zoom-overlay.active { display: flex; }
+        .image-zoom-overlay img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
         }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .image-zoom-overlay .zoom-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: none;
+            border: none;
+        }
+        .image-zoom-overlay .zoom-close:hover { transform: rotate(90deg); color: #f4b942; }
 
         /* ====== صفحة الصيانة ====== */
         .maintenance-box {
@@ -506,7 +458,6 @@
         .status-completed { background: #e5f9e5; color: #27ae60; }
         .status-delivered { background: #e5f0ff; color: #2980b9; }
 
-        /* ====== صفحة البحث عن سلعة ====== */
         .search-item-box {
             background: white;
             padding: 30px;
@@ -538,7 +489,6 @@
         }
         .search-item-box button:hover { background: #e0a535; }
 
-        /* ====== صفحة اتصل بنا ====== */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
@@ -554,15 +504,10 @@
             flex: 1;
             min-width: 150px;
         }
-        .contact-item i {
-            font-size: 40px;
-            color: #f4b942;
-            margin-bottom: 10px;
-        }
+        .contact-item i { font-size: 40px; color: #f4b942; margin-bottom: 10px; }
         .contact-item h4 { font-size: 18px; color: #0b1a2a; }
         .contact-item p { color: #5a7a95; }
 
-        /* ====== تذييل ====== */
         .footer {
             background: #0b1a2a;
             color: #aab9c9;
@@ -573,17 +518,17 @@
         }
         .footer a { color: #f4b942; }
 
-        /* ====== توافق الجوال ====== */
         @media (max-width: 750px) {
             .header { flex-direction: column; gap: 12px; }
             .nav-links { justify-content: center; }
             .hero h1 { font-size: 30px; }
             .filter-bar { flex-direction: column; align-items: stretch; }
             .filter-bar select, .filter-bar input, .filter-bar button { width: 100%; }
-            .slider-container { height: 260px; }
             .modal-details-grid { grid-template-columns: 1fr; }
             .modal-content { padding: 18px; }
-            .action-buttons a { padding: 10px 20px; font-size: 15px; }
+            .image-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+            .image-grid .grid-img { height: 130px; }
+            .modal-action-buttons .btn-action { padding: 10px 20px; font-size: 15px; }
         }
     </style>
 </head>
@@ -616,50 +561,26 @@
                 </p>
                 <a href="#" class="btn" onclick="switchPage('phones')"><i class="fas fa-mobile-alt"></i> استكشف المتجر</a>
             </div>
-
             <div class="features">
-                <div class="feature-card">
-                    <i class="fas fa-store"></i>
-                    <h3>جميع المحلات</h3>
-                    <p>أكثر من 50 محل تلفونات في الأردن</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>موثوق وآمن</h3>
-                    <p>جميع العروض من محلات معتمدة</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-headphones"></i>
-                    <h3>إكسسوارات متنوعة</h3>
-                    <p>شواحن، سماعات، كفرات، وأكثر</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>متابعة الصيانة</h3>
-                    <p>تعرف على حالة جهازك بأي وقت</p>
-                </div>
+                <div class="feature-card"><i class="fas fa-store"></i><h3>جميع المحلات</h3><p>أكثر من 50 محل تلفونات في الأردن</p></div>
+                <div class="feature-card"><i class="fas fa-check-circle"></i><h3>موثوق وآمن</h3><p>جميع العروض من محلات معتمدة</p></div>
+                <div class="feature-card"><i class="fas fa-headphones"></i><h3>إكسسوارات متنوعة</h3><p>شواحن، سماعات، كفرات، وأكثر</p></div>
+                <div class="feature-card"><i class="fas fa-tools"></i><h3>متابعة الصيانة</h3><p>تعرف على حالة جهازك بأي وقت</p></div>
             </div>
         </div>
 
         <!-- متجر الهواتف -->
         <div id="page-phones" class="page">
             <h2 style="margin-bottom:20px;"><i class="fas fa-mobile-alt" style="color:#f4b942;"></i> متجر الهواتف</h2>
-
             <div class="filter-bar">
                 <select id="phoneProvince">
                     <option value="">كل المحافظات</option>
-                    <option value="عمان">عمان</option>
-                    <option value="الزرقاء">الزرقاء</option>
-                    <option value="اربد">اربد</option>
-                    <option value="البلقاء">البلقاء</option>
-                    <option value="الكرك">الكرك</option>
-                    <option value="معان">معان</option>
-                    <option value="الطفيلة">الطفيلة</option>
-                    <option value="مادبا">مادبا</option>
-                    <option value="جرش">جرش</option>
-                    <option value="عجلون">عجلون</option>
-                    <option value="المفرق">المفرق</option>
-                    <option value="العقبة">العقبة</option>
+                    <option value="عمان">عمان</option><option value="الزرقاء">الزرقاء</option>
+                    <option value="اربد">اربد</option><option value="البلقاء">البلقاء</option>
+                    <option value="الكرك">الكرك</option><option value="معان">معان</option>
+                    <option value="الطفيلة">الطفيلة</option><option value="مادبا">مادبا</option>
+                    <option value="جرش">جرش</option><option value="عجلون">عجلون</option>
+                    <option value="المفرق">المفرق</option><option value="العقبة">العقبة</option>
                 </select>
                 <input type="text" id="phoneSearch" placeholder="ابحث بالاسم أو المواصفات..." />
                 <input type="number" id="priceFrom" placeholder="السعر من" style="min-width:100px;" />
@@ -667,7 +588,6 @@
                 <button class="btn-filter" onclick="filterPhones()"><i class="fas fa-filter"></i> فلتر</button>
                 <button class="btn-reset" onclick="resetPhoneFilter()">إلغاء</button>
             </div>
-
             <div id="phonesContainer" class="products-grid">
                 <div class="no-results">جاري تحميل الهواتف...</div>
             </div>
@@ -694,9 +614,7 @@
                 <input type="text" id="custName" placeholder="الاسم الكامل" />
                 <input type="text" id="custPhone" placeholder="رقم الهاتف (مثال: 0791234567)" />
                 <button onclick="checkMaintenance()"><i class="fas fa-search"></i> ابحث</button>
-                <div id="maintenanceResult" class="status-card">
-                    <!-- ستظهر النتيجة هنا -->
-                </div>
+                <div id="maintenanceResult" class="status-card"></div>
             </div>
         </div>
 
@@ -716,21 +634,9 @@
         <div id="page-contact" class="page">
             <h2 style="margin-bottom:20px;"><i class="fas fa-phone-alt" style="color:#f4b942;"></i> اتصل بنا</h2>
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h4>البريد الإلكتروني</h4>
-                    <p>info@cashforphone.jo</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h4>رقم الهاتف</h4>
-                    <p>079 1234 567</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h4>المقر الرئيسي</h4>
-                    <p>عمان - الأردن</p>
-                </div>
+                <div class="contact-item"><i class="fas fa-envelope"></i><h4>البريد الإلكتروني</h4><p>info@cashforphone.jo</p></div>
+                <div class="contact-item"><i class="fas fa-phone"></i><h4>رقم الهاتف</h4><p>079 1234 567</p></div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h4>المقر الرئيسي</h4><p>عمان - الأردن</p></div>
             </div>
             <div style="text-align:center; margin-top:30px; background:white; padding:20px; border-radius:20px;">
                 <p style="font-size:18px;">للتواصل السريع عبر واتساب:</p>
@@ -746,24 +652,20 @@
     <div id="productModal" class="modal-overlay" onclick="closeModalOutside(event)">
         <div class="modal-content" onclick="event.stopPropagation();">
             <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-            
-            <!-- شريط التمرير -->
-            <div class="slider-container" id="sliderContainer">
-                <div class="slider-track" id="sliderTrack"></div>
-                <button class="slider-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-right"></i></button>
-                <button class="slider-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-left"></i></button>
-            </div>
-            <div class="slider-dots" id="sliderDots"></div>
 
-            <!-- أزرار الاتصال -->
-            <div class="action-buttons">
-                <a href="#" class="btn-call" id="callBtn" target="_blank"><i class="fas fa-phone"></i> اتصال</a>
-                <a href="#" class="btn-whatsapp" id="whatsappBtn" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
-            </div>
-
-            <!-- اسم المنتج والسعر -->
+            <!-- اسم المنتج -->
             <div class="modal-product-name" id="modalProductName">اسم المنتج</div>
+            <!-- السعر -->
             <div class="modal-product-price" id="modalProductPrice">0 د.أ</div>
+
+            <!-- شبكة الصور (بديل السلايدر) -->
+            <div class="image-grid" id="imageGrid"></div>
+
+            <!-- أزرار الاتصال والواتساب -->
+            <div class="modal-action-buttons">
+                <button class="btn-action btn-call" onclick="callStore()"><i class="fas fa-phone"></i> اتصال</button>
+                <button class="btn-action btn-whatsapp" onclick="whatsappStore()"><i class="fab fa-whatsapp"></i> واتساب</button>
+            </div>
 
             <!-- شبكة التفاصيل -->
             <div class="modal-details-grid" id="modalDetailsGrid"></div>
@@ -784,6 +686,12 @@
         </div>
     </div>
 
+    <!-- ====== نافذة عرض الصورة بحجم كبير (زوم) ====== -->
+    <div id="imageZoomOverlay" class="image-zoom-overlay" onclick="closeImageZoom()">
+        <button class="zoom-close" onclick="closeImageZoom()"><i class="fas fa-times"></i></button>
+        <img id="zoomImage" src="" alt="تكبير الصورة" />
+    </div>
+
     <!-- ====== تذييل ====== -->
     <div class="footer">
         <p>© 2026 CASH FOR PHONE - جميع الحقوق محفوظة</p>
@@ -795,7 +703,7 @@
     <!-- ============================================================ -->
     <script>
         // ========== 1. رابط Google Apps Script ==========
-        const DATA_API_URL = 'https://script.google.com/macros/s/AKfycbw2DV9t7JA38YGtJ9Qskdaup6u86XukmOnyyuCXgq2PculeWUQ0g6MQ29Kgx2gNLRe5Sw/exec';
+        const DATA_API_URL = 'https://script.google.com/macros/s/AKfycbwcAV5DLv3_3xNcyxuVsASXjSIswEiJvN1uY5vNTgujXpPRpF16XB6TCDRoxhUl4ktzPw/exec';
 
         // ========== 2. نظام التنقل بين الصفحات ==========
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -817,7 +725,8 @@
             });
             if (pageId === 'phones') loadPhones();
             if (pageId === 'accessories') loadAccessories();
-            if (pageId === 'search') document.getElementById('itemResults').innerHTML = '<div class="no-results">اكتب اسم السلعة في الأعلى للبحث</div>';
+            if (pageId === 'search') document.getElementById('itemResults').innerHTML =
+                '<div class="no-results">اكتب اسم السلعة في الأعلى للبحث</div>';
         }
 
         navLinks.forEach(link => {
@@ -830,7 +739,9 @@
         // ========== 3. دوال معالجة الصور ==========
         function getImageUrl(photoUrl) {
             if (!photoUrl || photoUrl === '' || photoUrl === 'undefined') return null;
-            let first = photoUrl.split(',')[0].trim();
+            let urls = photoUrl.split(',').map(u => u.trim()).filter(u => u !== '');
+            if (urls.length === 0) return null;
+            let first = urls[0];
             let match = first.match(/[?&]id=([^&]+)/);
             if (match && match[1]) {
                 return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w400-h400`;
@@ -841,6 +752,7 @@
         function getAllImageUrls(photoUrl) {
             if (!photoUrl || photoUrl === '') return [];
             let urls = photoUrl.split(',').map(u => u.trim()).filter(u => u !== '');
+            if (urls.length === 0) return [];
             return urls.map(u => {
                 let match = u.match(/[?&]id=([^&]+)/);
                 if (match && match[1]) {
@@ -851,64 +763,89 @@
         }
 
         // ========== 4. نظام النافذة المنبثقة (Modal) ==========
-        let currentImages = [];
-        let currentIndex = 0;
         let currentProductData = null;
 
+        // دالة الاتصال بالمحل
+        function callStore() {
+            if (!currentProductData) return;
+            let phone = currentProductData.StorePhone || '';
+            if (!phone) { alert('⚠️ رقم الهاتف غير متوفر لهذا المحل.'); return; }
+            let cleanPhone = phone.replace(/[^0-9+]/g, '');
+            if (cleanPhone.startsWith('0')) cleanPhone = '962' + cleanPhone.substring(1);
+            window.location.href = `tel:+${cleanPhone}`;
+        }
+
+        // دالة فتح واتساب
+        function whatsappStore() {
+            if (!currentProductData) return;
+            let phone = currentProductData.StorePhone || '';
+            if (!phone) { alert('⚠️ رقم الهاتف غير متوفر لهذا المحل.'); return; }
+            let cleanPhone = phone.replace(/[^0-9+]/g, '');
+            if (cleanPhone.startsWith('0')) cleanPhone = '962' + cleanPhone.substring(1);
+            let message = encodeURIComponent(
+                `مرحباً، أنا مهتم بجهاز ${currentProductData.Brand || ''} ${currentProductData.DeviceModel || currentProductData.Name || ''} الموضح على منصة CASH FOR PHONE`
+            );
+            window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
+        }
+
+        // دالة فتح الصورة بحجم كبير (زوم)
+        function openImageZoom(imageUrl) {
+            if (!imageUrl || imageUrl === '') return;
+            let zoomOverlay = document.getElementById('imageZoomOverlay');
+            let zoomImg = document.getElementById('zoomImage');
+            zoomImg.src = imageUrl;
+            zoomOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageZoom() {
+            document.getElementById('imageZoomOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ========== 5. عرض تفاصيل المنتج (مع شبكة صور) ==========
         function openModal(productData) {
             currentProductData = productData;
-            
-            // 1. تعبئة اسم المنتج
+
+            // 1. اسم المنتج
             let name = productData.Brand ? productData.Brand + ' ' + productData.DeviceModel : productData.Name || 'هاتف';
             document.getElementById('modalProductName').textContent = name;
 
-            // 2. تعبئة السعر
+            // 2. السعر
             let price = productData.SellingPrice ? parseFloat(productData.SellingPrice).toLocaleString() : 'غير محدد';
             document.getElementById('modalProductPrice').textContent = price + ' د.أ';
 
-            // 3. تعبئة أزرار الاتصال
-            let phone = productData.StorePhone || '';
-            // إزالة أي مسافات أو علامات غير رقمية (ما عدا +)
-            let cleanPhone = phone.replace(/[^0-9+]/g, '');
-            if (cleanPhone && cleanPhone.startsWith('0')) {
-                cleanPhone = '+962' + cleanPhone.substring(1);
-            } else if (cleanPhone && !cleanPhone.startsWith('+')) {
-                cleanPhone = '+' + cleanPhone;
-            }
-            // زر الاتصال
-            let callBtn = document.getElementById('callBtn');
-            if (cleanPhone) {
-                callBtn.href = 'tel:' + cleanPhone;
-                callBtn.style.display = 'inline-flex';
-            } else {
-                callBtn.style.display = 'none';
-            }
-            // زر واتساب
-            let whatsappBtn = document.getElementById('whatsappBtn');
-            if (cleanPhone) {
-                let waNumber = cleanPhone.replace(/[^0-9]/g, '');
-                if (waNumber.startsWith('962') && waNumber.length > 10) {
-                    waNumber = waNumber.substring(3);
-                }
-                whatsappBtn.href = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent('مرحباً، أنا مهتم بهذا المنتج: ' + name);
-                whatsappBtn.style.display = 'inline-flex';
-            } else {
-                whatsappBtn.style.display = 'none';
-            }
-
-            // 4. تعبئة الصور في السلايدر
+            // 3. شبكة الصور
+            let grid = document.getElementById('imageGrid');
+            grid.innerHTML = '';
             let imageUrls = getAllImageUrls(productData.PhotoUrl);
-            if (imageUrls.length === 0) {
-                imageUrls = ['data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23eef3f8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2240%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E'];
-            }
-            currentImages = imageUrls;
-            currentIndex = 0;
-            renderSlider();
+            console.log('📸 عدد الصور التي تم جلبها:', imageUrls.length);
 
-            // 5. تعبئة شبكة التفاصيل
-            let grid = document.getElementById('modalDetailsGrid');
+            if (imageUrls.length === 0) {
+                imageUrls = [
+                    'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23eef3f8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2240%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E'
+                ];
+            }
+
+            imageUrls.forEach(img => {
+                let imgEl = document.createElement('img');
+                imgEl.src = img;
+                imgEl.className = 'grid-img';
+                imgEl.loading = 'lazy';
+                imgEl.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openImageZoom(img);
+                });
+                imgEl.onerror = function() {
+                    this.src =
+                        'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23eef3f8%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2240%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🖼️%3C/text%3E%3C/svg%3E';
+                };
+                grid.appendChild(imgEl);
+            });
+
+            // 4. شبكة التفاصيل
+            let detailsGrid = document.getElementById('modalDetailsGrid');
             let detailsHtml = '';
-            
             const detailFields = [
                 { label: '📦 التخزين', key: 'Storage' },
                 { label: '🎨 اللون', key: 'Color' },
@@ -917,7 +854,6 @@
                 { label: '📋 الحالة', key: 'Condition' },
                 { label: '📝 المواصفات', key: 'Specs' },
             ];
-
             detailFields.forEach(field => {
                 let value = productData[field.key] || '';
                 if (value && value.trim() !== '') {
@@ -929,10 +865,10 @@
                     `;
                 }
             });
+            detailsGrid.innerHTML = detailsHtml ||
+                '<div class="detail-item" style="grid-column:1/-1;text-align:center;color:#7f8c8d;">لا توجد تفاصيل إضافية</div>';
 
-            grid.innerHTML = detailsHtml || '<div class="detail-item" style="grid-column:1/-1;text-align:center;color:#7f8c8d;">لا توجد تفاصيل إضافية</div>';
-
-            // 6. الملاحظات
+            // 5. الملاحظات
             let notesDiv = document.getElementById('modalNotes');
             let notesText = document.getElementById('modalNotesText');
             if (productData.Notes && productData.Notes.trim() !== '') {
@@ -942,13 +878,13 @@
                 notesDiv.style.display = 'none';
             }
 
-            // 7. معلومات المحل
+            // 6. معلومات المحل
             document.getElementById('modalStoreName').textContent = productData.StoreName || 'محل غير محدد';
             document.getElementById('modalStorePhone').textContent = productData.StorePhone || 'غير متوفر';
             document.getElementById('modalStoreLocation').textContent = productData.Location || 'غير محدد';
             document.getElementById('modalStoreProvince').textContent = productData.Province || 'غير محدد';
 
-            // 8. إظهار النافذة
+            // 7. إظهار النافذة
             document.getElementById('productModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -964,63 +900,6 @@
             }
         }
 
-        // ========== 5. السلايدر (Slider) ==========
-        function renderSlider() {
-            let track = document.getElementById('sliderTrack');
-            let dots = document.getElementById('sliderDots');
-            
-            track.innerHTML = '';
-            dots.innerHTML = '';
-
-            if (currentImages.length === 0) return;
-
-            currentImages.forEach((img, index) => {
-                let imgEl = document.createElement('img');
-                imgEl.src = img;
-                imgEl.alt = 'صورة المنتج';
-                imgEl.loading = 'lazy';
-                // عند الضغط على الصورة تفتح في نافذة جديدة للتكبير
-                imgEl.style.cursor = 'zoom-in';
-                imgEl.onclick = function() {
-                    window.open(img, '_blank');
-                };
-                track.appendChild(imgEl);
-
-                let dot = document.createElement('span');
-                dot.className = 'dot' + (index === currentIndex ? ' active' : '');
-                dot.onclick = () => goToSlide(index);
-                dots.appendChild(dot);
-            });
-
-            updateSliderPosition();
-        }
-
-        function updateSliderPosition() {
-            let track = document.getElementById('sliderTrack');
-            let images = track.querySelectorAll('img');
-            
-            if (images.length === 0) return;
-
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            let dots = document.querySelectorAll('.slider-dots .dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function changeSlide(direction) {
-            if (currentImages.length === 0) return;
-            currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
-            updateSliderPosition();
-        }
-
-        function goToSlide(index) {
-            if (index < 0 || index >= currentImages.length) return;
-            currentIndex = index;
-            updateSliderPosition();
-        }
-
         // ========== 6. متجر الهواتف ==========
         let allPhones = [];
 
@@ -1032,14 +911,14 @@
                 if (!response.ok) throw new Error('فشل الاتصال بالسيرفر');
                 const data = await response.json();
                 allPhones = data;
-
                 if (allPhones && allPhones.length > 0) {
                     renderPhones(allPhones);
                 } else {
                     container.innerHTML = '<div class="no-results">لا توجد هواتف معروضة حالياً.</div>';
                 }
             } catch (error) {
-                container.innerHTML = '<div class="no-results">⚠️ حدث خطأ في تحميل البيانات. تأكد من الاتصال بالإنترنت.</div>';
+                container.innerHTML =
+                    '<div class="no-results">⚠️ حدث خطأ في تحميل البيانات. تأكد من الاتصال بالإنترنت.</div>';
                 console.error('خطأ في جلب الهواتف:', error);
             }
         }
@@ -1054,12 +933,11 @@
             phones.forEach(p => {
                 const name = p.Brand ? p.Brand + ' ' + p.DeviceModel : p.Name || 'هاتف';
                 const price = p.SellingPrice ? parseFloat(p.SellingPrice).toLocaleString() : 'غير محدد';
-                
                 let img = getImageUrl(p.PhotoUrl);
                 if (!img) {
-                    img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E';
+                    img =
+                        'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E';
                 }
-                
                 const productJson = JSON.stringify(p).replace(/"/g, '&quot;');
                 html += `
                     <div class="product-card" onclick="openModal(${productJson})">
@@ -1081,7 +959,6 @@
             const province = document.getElementById('phoneProvince').value;
             const from = parseFloat(document.getElementById('priceFrom').value) || 0;
             const to = parseFloat(document.getElementById('priceTo').value) || Infinity;
-
             let filtered = allPhones.filter(p => {
                 const fullName = (p.Brand + ' ' + p.DeviceModel + ' ' + p.Name).toLowerCase();
                 const matchSearch = fullName.includes(search) || (p.Notes && p.Notes.toLowerCase().includes(search));
@@ -1112,7 +989,6 @@
                 if (!response.ok) throw new Error('فشل الاتصال بالسيرفر');
                 const data = await response.json();
                 allAccessories = data;
-
                 if (allAccessories && allAccessories.length > 0) {
                     renderAccessories(allAccessories);
                 } else {
@@ -1135,9 +1011,9 @@
                 const price = item.SellingPrice ? parseFloat(item.SellingPrice).toLocaleString() : 'غير محدد';
                 let img = getImageUrl(item.PhotoUrl);
                 if (!img) {
-                    img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎧%3C/text%3E%3C/svg%3E';
+                    img =
+                        'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🎧%3C/text%3E%3C/svg%3E';
                 }
-                
                 const productJson = JSON.stringify(item).replace(/"/g, '&quot;');
                 html += `
                     <div class="product-card" onclick="openModal(${productJson})">
@@ -1173,29 +1049,27 @@
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
             const resultDiv = document.getElementById('maintenanceResult');
-
             if (!name || !phone) {
                 resultDiv.style.display = 'block';
                 resultDiv.innerHTML = '<p style="color:#e74c3c;">⚠️ يرجى إدخال الاسم ورقم الهاتف.</p>';
                 return;
             }
-
             resultDiv.style.display = 'block';
             resultDiv.innerHTML = '<p>⏳ جاري البحث...</p>';
-
             try {
-                const url = `${DATA_API_URL}?action=maintenance&phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}`;
+                const url =
+                    `${DATA_API_URL}?action=maintenance&phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}`;
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('فشل الاتصال بالسيرفر');
                 const data = await response.json();
-
                 if (data && data.length > 0) {
                     const record = data[0];
                     let statusClass = 'status-pending';
                     let statusText = '🔴 قيد الصيانة';
-                    if (record.Status === 'Completed') { statusClass = 'status-completed'; statusText = '🟢 جاهز للتسليم'; }
-                    if (record.Status === 'Delivered') { statusClass = 'status-delivered'; statusText = '🔵 تم التسليم'; }
-
+                    if (record.Status === 'Completed') { statusClass = 'status-completed';
+                        statusText = '🟢 جاهز للتسليم'; }
+                    if (record.Status === 'Delivered') { statusClass = 'status-delivered';
+                        statusText = '🔵 تم التسليم'; }
                     let html = `
                         <h4 style="margin-bottom:10px;">📋 تفاصيل طلب الصيانة</h4>
                         <p><strong>👤 العميل:</strong> ${record.CustomerName || 'غير معروف'}</p>
@@ -1221,38 +1095,32 @@
         function searchItems() {
             const query = document.getElementById('itemSearch').value.trim().toLowerCase();
             const container = document.getElementById('itemResults');
-
             if (!query) {
                 container.innerHTML = '<div class="no-results">اكتب اسم السلعة في الأعلى للبحث</div>';
                 return;
             }
-
             const phoneResults = allPhones.filter(p => {
                 const full = (p.Brand + ' ' + p.DeviceModel + ' ' + p.Name).toLowerCase();
                 return full.includes(query);
             });
-
             const accResults = allAccessories.filter(a =>
                 (a.Name && a.Name.toLowerCase().includes(query)) ||
                 (a.Notes && a.Notes.toLowerCase().includes(query))
             );
-
             const combined = [...phoneResults, ...accResults];
-
             if (combined.length === 0) {
                 container.innerHTML = '<div class="no-results">❌ لا توجد نتائج مطابقة لـ "' + query + '"</div>';
                 return;
             }
-
             let html = '';
             combined.forEach(item => {
                 const name = item.Brand ? item.Brand + ' ' + item.DeviceModel : item.Name || 'سلعة';
                 const price = item.SellingPrice ? parseFloat(item.SellingPrice).toLocaleString() : 'غير محدد';
                 let img = getImageUrl(item.PhotoUrl);
                 if (!img) {
-                    img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🔍%3C/text%3E%3C/svg%3E';
+                    img =
+                        'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E🔍%3C/text%3E%3C/svg%3E';
                 }
-                
                 const productJson = JSON.stringify(item).replace(/"/g, '&quot;');
                 html += `
                     <div class="product-card" onclick="openModal(${productJson})">
@@ -1274,7 +1142,7 @@
             if (document.getElementById('page-accessories').classList.contains('active')) loadAccessories();
         });
 
-        console.log('✅ صفحة CASH FOR PHONE جاهزة مع السوق المفتوح الكامل!');
+        console.log('✅ صفحة CASH FOR PHONE جاهزة مع شبكة الصور بدلاً من السلايدر!');
     </script>
 </body>
 </html>
