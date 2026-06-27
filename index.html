@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ====== الأساسيات ====== */
+        /* ====== جميع الأنماط كما هي ====== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Tajawal', sans-serif;
@@ -17,7 +17,6 @@
         }
         a { text-decoration: none; }
 
-        /* ====== الهيدر ====== */
         .header {
             background: #0b1a2a;
             padding: 15px 30px;
@@ -56,14 +55,12 @@
             color: #0b1a2a;
         }
 
-        /* ====== المحتوى ====== */
         .container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* ====== الصفحات (تبويبات) ====== */
         .page {
             display: none;
             animation: fadeUp 0.5s ease;
@@ -74,7 +71,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ====== الصفحة الرئيسية ====== */
         .hero {
             background: linear-gradient(135deg, #0b1a2a, #1a344a);
             padding: 60px 30px;
@@ -109,7 +105,6 @@
         }
         .hero .btn:hover { background: #e0a535; transform: scale(1.03); }
 
-        /* ====== بطاقات المميزات ====== */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -134,7 +129,6 @@
         .feature-card h3 { font-size: 20px; color: #0b1a2a; }
         .feature-card p { color: #5a7a95; font-size: 15px; }
 
-        /* ====== شريط الفلتر ====== */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
@@ -178,7 +172,6 @@
         }
         .btn-reset:hover { background: #c0392b; }
 
-        /* ====== شبكة المنتجات ====== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -235,7 +228,6 @@
             grid-column: 1 / -1;
         }
 
-        /* ====== صفحة الصيانة ====== */
         .maintenance-box {
             background: white;
             padding: 40px;
@@ -288,7 +280,6 @@
         .status-completed { background: #e5f9e5; color: #27ae60; }
         .status-delivered { background: #e5f0ff; color: #2980b9; }
 
-        /* ====== صفحة البحث عن سلعة ====== */
         .search-item-box {
             background: white;
             padding: 30px;
@@ -320,7 +311,6 @@
         }
         .search-item-box button:hover { background: #e0a535; }
 
-        /* ====== صفحة اتصل بنا ====== */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
@@ -344,7 +334,6 @@
         .contact-item h4 { font-size: 18px; color: #0b1a2a; }
         .contact-item p { color: #5a7a95; }
 
-        /* ====== تذييل ====== */
         .footer {
             background: #0b1a2a;
             color: #aab9c9;
@@ -355,7 +344,6 @@
         }
         .footer a { color: #f4b942; }
 
-        /* ====== توافق الجوال ====== */
         @media (max-width: 750px) {
             .header { flex-direction: column; gap: 12px; }
             .nav-links { justify-content: center; }
@@ -383,9 +371,7 @@
     <!-- ====== الحاوية ====== -->
     <div class="container">
 
-        <!-- ============================================================ -->
         <!-- الصفحة الرئيسية -->
-        <!-- ============================================================ -->
         <div id="page-home" class="page active">
             <div class="hero">
                 <h1>مرحباً بك في <span>CASH FOR PHONE</span></h1>
@@ -421,9 +407,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- متجر الهواتف -->
-        <!-- ============================================================ -->
         <div id="page-phones" class="page">
             <h2 style="margin-bottom:20px;"><i class="fas fa-mobile-alt" style="color:#f4b942;"></i> متجر الهواتف</h2>
 
@@ -455,9 +439,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- متجر الاكسسوارات -->
-        <!-- ============================================================ -->
         <div id="page-accessories" class="page">
             <h2 style="margin-bottom:20px;"><i class="fas fa-headphones" style="color:#f4b942;"></i> متجر الاكسسوارات</h2>
             <div class="filter-bar">
@@ -470,9 +452,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- الاستعلام عن صيانة -->
-        <!-- ============================================================ -->
         <div id="page-maintenance" class="page">
             <h2 style="text-align:center; margin-bottom:30px;"><i class="fas fa-tools" style="color:#f4b942;"></i> الاستعلام عن صيانة</h2>
             <div class="maintenance-box">
@@ -486,9 +466,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- البحث عن سلعة -->
-        <!-- ============================================================ -->
         <div id="page-search" class="page">
             <h2 style="text-align:center; margin-bottom:30px;"><i class="fas fa-search" style="color:#f4b942;"></i> البحث عن سلعة</h2>
             <div class="search-item-box">
@@ -500,9 +478,7 @@
             </div>
         </div>
 
-        <!-- ============================================================ -->
         <!-- اتصل بنا -->
-        <!-- ============================================================ -->
         <div id="page-contact" class="page">
             <h2 style="margin-bottom:20px;"><i class="fas fa-phone-alt" style="color:#f4b942;"></i> اتصل بنا</h2>
             <div class="contact-info">
@@ -530,7 +506,7 @@
             </div>
         </div>
 
-    </div><!-- نهاية container -->
+    </div>
 
     <!-- ====== تذييل ====== -->
     <div class="footer">
@@ -539,10 +515,13 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- جافا سكريبت (التنقل، البحث، البيانات) -->
+    <!-- جافا سكريبت - مع رابط Google Apps Script الجديد -->
     <!-- ============================================================ -->
     <script>
-        // ========== 1. نظام التنقل بين الصفحات ==========
+        // ========== 1. رابط Google Apps Script الجديد ==========
+        const DATA_API_URL = 'https://script.google.com/macros/s/AKfycbw2DV9t7JA38YGtJ9Qskdaup6u86XukmOnyyuCXgq2PculeWUQ0g6MQ29Kgx2gNLRe5Sw/exec';
+
+        // ========== 2. نظام التنقل بين الصفحات ==========
         const navLinks = document.querySelectorAll('.nav-links a');
         const pages = {
             home: document.getElementById('page-home'),
@@ -573,36 +552,17 @@
             });
         });
 
-        // ========== 2. رابط أداة جوجل البرمجية (سيتم تحديثه لاحقاً) ==========
-        const DATA_API_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // غيّره لاحقاً
-
-        // ========== 3. بيانات تجريبية (لن يتم استخدامها بعد ربط الـ API) ==========
-        // سيتم جلب البيانات الحقيقية من الـ API
-
-        // ========== 4. متجر الهواتف ==========
+        // ========== 3. متجر الهواتف (جلب حقيقي من السكربت) ==========
         let allPhones = [];
 
         async function loadPhones() {
             const container = document.getElementById('phonesContainer');
-            container.innerHTML = '<div class="no-results">جاري التحميل...</div>';
+            container.innerHTML = '<div class="no-results">جاري تحميل الهواتف...</div>';
             try {
-                // استخدم الرابط الحقيقي بعد كتابة الأداة
-                // const response = await fetch(DATA_API_URL + '?action=phones');
-                // const data = await response.json();
-                // allPhones = data;
-
-                // === بيانات تجريبية (للتجربة) ===
-                allPhones = [
-                    { Name: 'iPhone 14 Pro Max', Brand: 'Apple', DeviceModel: '14 Pro Max', SellingPrice: 650, Province: 'عمان', PhotoUrl: '' },
-                    { Name: 'Samsung Galaxy S24 Ultra', Brand: 'Samsung', DeviceModel: 'S24 Ultra', SellingPrice: 580, Province: 'الزرقاء', PhotoUrl: '' },
-                    { Name: 'Google Pixel 8 Pro', Brand: 'Google', DeviceModel: 'Pixel 8 Pro', SellingPrice: 490, Province: 'اربد', PhotoUrl: '' },
-                    { Name: 'iPhone 13', Brand: 'Apple', DeviceModel: '13', SellingPrice: 420, Province: 'عمان', PhotoUrl: '' },
-                    { Name: 'Samsung Galaxy A55', Brand: 'Samsung', DeviceModel: 'A55', SellingPrice: 320, Province: 'مادبا', PhotoUrl: '' },
-                    { Name: 'Xiaomi 14T Pro', Brand: 'Xiaomi', DeviceModel: '14T Pro', SellingPrice: 370, Province: 'البلقاء', PhotoUrl: '' },
-                    { Name: 'OnePlus 12', Brand: 'OnePlus', DeviceModel: '12', SellingPrice: 500, Province: 'عمان', PhotoUrl: '' },
-                    { Name: 'iPhone 15', Brand: 'Apple', DeviceModel: '15', SellingPrice: 550, Province: 'الكرك', PhotoUrl: '' },
-                ];
-                // =============================
+                const response = await fetch(DATA_API_URL + '?action=phones');
+                if (!response.ok) throw new Error('فشل الاتصال بالسيرفر');
+                const data = await response.json();
+                allPhones = data;
 
                 if (allPhones && allPhones.length > 0) {
                     renderPhones(allPhones);
@@ -610,8 +570,8 @@
                     container.innerHTML = '<div class="no-results">لا توجد هواتف معروضة حالياً.</div>';
                 }
             } catch (error) {
-                container.innerHTML = '<div class="no-results">⚠️ حدث خطأ في تحميل البيانات.</div>';
-                console.error(error);
+                container.innerHTML = '<div class="no-results">⚠️ حدث خطأ في تحميل البيانات. تأكد من الاتصال بالإنترنت.</div>';
+                console.error('خطأ في جلب الهواتف:', error);
             }
         }
 
@@ -625,6 +585,7 @@
             phones.forEach(p => {
                 const name = p.Brand ? p.Brand + ' ' + p.DeviceModel : p.Name || 'هاتف';
                 const price = p.SellingPrice ? parseFloat(p.SellingPrice).toLocaleString() : 'غير محدد';
+                // الصورة: إذا كانت موجودة نأخذ الأولى، وإلا نضع صورة افتراضية
                 const img = p.PhotoUrl ? p.PhotoUrl.split(',')[0] : 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23eef3f8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 font-family=%22Tajawal%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3E📱%3C/text%3E%3C/svg%3E';
                 html += `
                     <div class="product-card">
@@ -666,27 +627,17 @@
             renderPhones(allPhones);
         }
 
-        // ========== 5. متجر الاكسسوارات ==========
+        // ========== 4. متجر الاكسسوارات ==========
         let allAccessories = [];
 
         async function loadAccessories() {
             const container = document.getElementById('accessoriesContainer');
-            container.innerHTML = '<div class="no-results">جاري التحميل...</div>';
+            container.innerHTML = '<div class="no-results">جاري تحميل الاكسسوارات...</div>';
             try {
-                // const response = await fetch(DATA_API_URL + '?action=accessories');
-                // const data = await response.json();
-                // allAccessories = data;
-
-                // === بيانات تجريبية ===
-                allAccessories = [
-                    { Name: 'شاحن سريع 20W', SellingPrice: 12, Province: 'عمان', PhotoUrl: '' },
-                    { Name: 'سماعة بلوتوث لاسلكية', SellingPrice: 25, Province: 'الزرقاء', PhotoUrl: '' },
-                    { Name: 'كفر سيليكون شفاف', SellingPrice: 5, Province: 'اربد', PhotoUrl: '' },
-                    { Name: 'بطارية خارجية 10000mAh', SellingPrice: 18, Province: 'عمان', PhotoUrl: '' },
-                    { Name: 'سماعة أذن سلكية', SellingPrice: 8, Province: 'البلقاء', PhotoUrl: '' },
-                    { Name: 'شاحن سيارة', SellingPrice: 10, Province: 'مادبا', PhotoUrl: '' },
-                ];
-                // =============================
+                const response = await fetch(DATA_API_URL + '?action=accessories');
+                if (!response.ok) throw new Error('فشل الاتصال بالسيرفر');
+                const data = await response.json();
+                allAccessories = data;
 
                 if (allAccessories && allAccessories.length > 0) {
                     renderAccessories(allAccessories);
@@ -695,6 +646,7 @@
                 }
             } catch (error) {
                 container.innerHTML = '<div class="no-results">⚠️ حدث خطأ في تحميل الاكسسوارات.</div>';
+                console.error('خطأ في جلب الإكسسوارات:', error);
             }
         }
 
@@ -737,7 +689,7 @@
             renderAccessories(allAccessories);
         }
 
-        // ========== 6. الاستعلام عن صيانة ==========
+        // ========== 5. الاستعلام عن صيانة ==========
         async function checkMaintenance() {
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
@@ -753,22 +705,10 @@
             resultDiv.innerHTML = '<p>⏳ جاري البحث...</p>';
 
             try {
-                // const response = await fetch(DATA_API_URL + `?action=maintenance&phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}`);
-                // const data = await response.json();
-
-                // === بيانات تجريبية ===
-                const data = [{
-                    CustomerName: 'أحمد محمد',
-                    PhoneNumber: '0791234567',
-                    DeviceType: 'iPhone 14 Pro',
-                    Problem: 'شاشة مكسورة',
-                    ReceiveTime: '2026-06-20 14:30',
-                    CompleteTime: '2026-06-25 10:00',
-                    DeliveryTime: null,
-                    Status: 'Completed',
-                    RepairCost: 45
-                }];
-                // =============================
+                const url = `${DATA_API_URL}?action=maintenance&phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('فشل الاتصال بالسيرفر');
+                const data = await response.json();
 
                 if (data && data.length > 0) {
                     const record = data[0];
@@ -794,10 +734,11 @@
                 }
             } catch (error) {
                 resultDiv.innerHTML = '<p style="color:#e74c3c;">⚠️ حدث خطأ في الاتصال بالخادم.</p>';
+                console.error('خطأ في جلب الصيانة:', error);
             }
         }
 
-        // ========== 7. البحث عن سلعة ==========
+        // ========== 6. البحث عن سلعة ==========
         function searchItems() {
             const query = document.getElementById('itemSearch').value.trim().toLowerCase();
             const container = document.getElementById('itemResults');
@@ -818,7 +759,6 @@
                 (a.Notes && a.Notes.toLowerCase().includes(query))
             );
 
-            // ندمج النتائج
             const combined = [...phoneResults, ...accResults];
 
             if (combined.length === 0) {
@@ -826,7 +766,6 @@
                 return;
             }
 
-            // عرض النتائج بنفس تنسيق البطاقات
             let html = '';
             combined.forEach(item => {
                 const name = item.Brand ? item.Brand + ' ' + item.DeviceModel : item.Name || 'سلعة';
@@ -846,15 +785,13 @@
             container.innerHTML = html;
         }
 
-        // ========== 8. تحميل البيانات عند بدء التشغيل ==========
+        // ========== 7. تحميل البيانات عند بدء التشغيل ==========
         window.addEventListener('load', function() {
-            // نحمّل الصفحة النشطة (الرئيسية) لكن لا نحمل البيانات إلا عند فتح التبويب
             if (document.getElementById('page-phones').classList.contains('active')) loadPhones();
             if (document.getElementById('page-accessories').classList.contains('active')) loadAccessories();
         });
 
-        console.log('✅ صفحة CASH FOR PHONE جاهزة!');
-        console.log('🔧 يرجى تحديث DATA_API_URL برابط أداة جوجل البرمجية بعد كتابتها.');
+        console.log('✅ صفحة CASH FOR PHONE جاهزة ومربوطة بالسكربت الجديد!');
     </script>
 </body>
 </html>
